@@ -10,6 +10,7 @@
   * U0TX/GPIO1	<--- RX
   * GPIO0	      <--- GND
 #### Note: 
+
     * When run example **CameraWebServer**, make sure connect IO0 to GND when upload, otherwise you will see errors:
     ```
       Esp32 Cam A fatal error occurred: Failed to connect to ESP32: No serial data received
