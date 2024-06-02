@@ -32,7 +32,7 @@ import pywemo
 devices = pywemo.discover_devices()
 print(devices)
 print(devices[0].get_state())
-print(devices[0].serialnumber)
+print(devices[0].model)
 
 #wemo = pywemo.discover_devices() 
 #print(wemo)
