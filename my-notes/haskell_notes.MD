@@ -13,4 +13,9 @@
   (>>=) :: Monad m => m a -> a -> m b -> m b
 ```
   
-
+### Using Writer
+```
+ghci> import Control.Monad.Writer
+ghci> fmap (+1) (writer (42, "step 1\n")) :: Writer String Int
+WriterT (Identity (43,"step 1\n"))
+```
