@@ -3,12 +3,12 @@
 * IDE: Arduino IDE
 * connection & power: FTDI USB
 * ESP32-CAM	FTDI Cable
-  * Board ------------ FTDI
-  * GND <------------- GND
+  * Board ------------- FTDI
+  * GND <------------ GND
   * 5V	<-------------- VCC (5V)
   * U0RX/GPIO3	<--- TX
   * U0TX/GPIO1	<--- RX
-  * GPIO0	<-------- GND
+  * GPIO0	<--------- GND
 #### Note: 
 * When run example **CameraWebServer**, make sure connect IO0 to GND when upload, otherwise you will see errors:
 ```
