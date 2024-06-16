@@ -21,3 +21,21 @@ trait Adder:
   - better readability
   - hide the type definition from the client code
   - mostly used for output/return value type
+
+### typeclass with Ad hoc polymorphism
+- define algorithm (trait, typeclass)
+- create instances for different types(implementation, given/implicit)
+- import the proper one in the places where they will be used
+```
+trait Adder[T]:
+    def sum(a: T, b: T): T
+
+object Adder:
+    def sum[T: Adder](a: T, b: T) = summon[Adder[T]].sum(a, b)
+
+given addInt: Adder[Int] = (a: Int, b: Int) = a + b
+```
+### self-type and cake design pattern
+- used for **dependency injection**
+- avoid inheritance in a non-is-a relationship
+    - inheritance leaking functionality
