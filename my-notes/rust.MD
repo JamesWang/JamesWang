@@ -29,3 +29,10 @@ path = "src/second.rs"
 * [build-dependencies]: Dependencies for build scripts
 * [target]: This is for cross-compilation of code for various target architectures.
   * this is not to be confused with the output targets of the package, which can be lib, bin and so on.
+### Feature Flags
+* #[cfg(predicate)] - instructs the compiler to only compile what it is attached to if the predicate is *true*
+* #[cfg_attr(predicate, attribute)] - instruct the compiler to only enable the specified attribute(second argument) if the 
+   predicate is *true*
+* #[cfg_attr(not(predicate)) - returns *true* if the predicate is false and vice verse
+* #[cfg_attr(all(predicate)), #[cfg_attr(any(predicate))]
+
