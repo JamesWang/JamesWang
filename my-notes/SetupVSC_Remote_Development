@@ -1,0 +1,19 @@
+## To avoid enter password every time when open remote project, set vscode remote development
+
+### VS Code Setup
+* Install **Remote Development** extension 
+* Also installed vsCode Server on remote host server(login info required)
+
+### SSH Setup - Key
+* Using ssh-keygen to create your keys
+* Copy the content(public key) of ~/.ssh/id_rsa.pub
+* login to the remote server(i.e ubuntu), go to ~/.ssh/ directory, add(append) the copied content(publish key) to authorized_keys
+
+### SSH Config 
+* on your client, go to ~/.ssh, open ~/.ssh/config
+```
+Host <remote-host>
+  HostName <remote-host>
+  User <username>
+  IdentityFile ~/.ssh/id_rsa
+```
