@@ -1,8 +1,6 @@
 1. docker-compose is discontinued, use `docker compose`
 2. configure a node which uses remote zookeeper
-  ```
-  version: "2"
-  
+  ```  
   networks:
     app-tier:
       driver: bridge
