@@ -1,0 +1,42 @@
+1. docker-compose is discontinued, use `docker compose`
+2. configure a node which uses remote zookeeper
+  ```
+  version: "2"
+  
+  networks:
+    app-tier:
+      driver: bridge
+  
+  
+  services:
+    kafka:
+      image: "confluentinc/cp-enterprise-kafka:latest"
+      container_name: kafka_on_pi4
+      ports:
+        - 9093:9093
+        - 29093:29093
+      environment:
+        KAFKA_BROKER_ID: 2
+        KAFKA_ZOOKEEPER_CONNECT: 192.168.0.28:2181
+        ALLOW_PLAINTEXT_LISTENER: "yes"
+        KAFKA_ADVERTISED_LISTENERS: >-
+          PLAINTEXT://192.168.0.114:29093,PLAINTEXT_HOST://192.168.0.114:9093
+        KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: >-
+          PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+        KAFKA_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
+        KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+        KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 2
+      volumes:
+      - ./data:/var/lib/kafka/data
+  ```
+
+3. Some errors and how to resolve
+  ```
+        java.lang.RuntimeException: Stored node id 1 doesn't match previous node id 2 in /var/lib/kafka/data/meta.properties. 
+        If you moved your data, make sure your configured node id matches. If you intend to create a new node, you should 
+          remove all data in your data directories.
+  ```        
+  when have two or more nodes, each node needs to set a volumns map inside data directories to a different one(local) or change 
+  the config if not run using docker. ***- ./data:/var/lib/kafka/data***
+
+  
