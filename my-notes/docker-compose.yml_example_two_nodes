@@ -1,0 +1,87 @@
+### Main docker-compose yaml file
+```yaml
+  
+networks:
+  app-tier:
+    driver: bridge
+
+
+services:
+  zookeeper:
+    image: "confluentinc/cp-zookeeper:latest"
+    hostname: zookeeper
+    container_name: zookeeper
+    ports:
+      - 2181:2181
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+      ALLOW_ANONYMOUS_LOGIN: "yes"
+
+  kafka:
+    image: "confluentinc/cp-enterprise-kafka:latest"
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+      - 29092:29092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+      KAFKA_ADVERTISED_LISTENERS: >-
+        PLAINTEXT://192.168.0.28:29092,PLAINTEXT_HOST://192.168.0.28:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: >-
+        PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 2
+    volumes:
+      - ./zookeeper_data:/var/lib/zookeeper/data
+      - ./zookeeper_log:/var/lib/zookeeper/log
+
+  kafdrop:
+    image: obsidiandynamics/kafdrop:latest
+    ports:
+      - 9000:9000
+    environment:
+      KAFKA_BROKERCONNECT: kafka:29092
+    depends_on:
+      - kafka
+```
+
+### only kafka node yaml file, kafka running on Pi4 docker
+
+```yml
+  networks:
+  app-tier:
+    driver: bridge
+
+
+services:
+  kafka:
+    image: "confluentinc/cp-enterprise-kafka:latest"
+    container_name: kafka_on_pi4
+    ports:
+      - 9093:9093
+      - 29093:29093
+    environment:
+      KAFKA_BROKER_ID: 2
+      KAFKA_ZOOKEEPER_CONNECT: 192.168.0.28:2181
+      ALLOW_PLAINTEXT_LISTENER: "yes"
+      KAFKA_ADVERTISED_LISTENERS: >-
+        PLAINTEXT://192.168.0.114:29093,PLAINTEXT_HOST://192.168.0.114:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: >-
+        PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: "PLAINTEXT"
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 2
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 2
+    volumes:
+    - ./data:/var/lib/kafka/data
+```
+
+### Running KafkaDrop Web GUI for Kafka on the same node as master
+```
+java -jar kafdrop-3.27.0.jar --kafka.brokerConnect=localhost:9092
+```
