@@ -39,3 +39,13 @@ given addInt: Adder[Int] = (a: Int, b: Int) = a + b
 - used for **dependency injection**
 - avoid inheritance in a non-is-a relationship
     - inheritance leaking functionality
+
+### Reactive With Scala
+- Manage failures, known as **design for failure**
+    - A failing component does not brining down the entire application
+- Minimize latency by delegating long-running processes to background threads without blocking the main thread of execution
+- Effectful computation
+  - An effect is modeled usually in the form of a type constructor that constructs types with these additional capabilities.
+  - An effect adds some capabilities to a computation.
+  - Abstract within containers that expose funcational interfaces to the world
+
