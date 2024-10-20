@@ -39,7 +39,7 @@ path = "src/second.rs"
 ## Rust Effect types
 [#effect](https://blog.yoshuawuyts.com/extending-rusts-effect-system/)
 * async { async_fn().await }; // async effect
-* unsafe { unsafe_fn() };     // unsafe effect
+* unsafe { unsafe_fn() };     // unsafe effect-like, not an effect
 * const { const_fn() };       // const effect
 * try { try_fn()? };          // try effect (unstable)
 * || { yield my_type };       // generator effect (unstable)
