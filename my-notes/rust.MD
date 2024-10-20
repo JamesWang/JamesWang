@@ -36,3 +36,12 @@ path = "src/second.rs"
 * #[cfg_attr(not(predicate)) - returns *true* if the predicate is false and vice verse
 * #[cfg_attr(all(predicate)), #[cfg_attr(any(predicate))]
 
+## Rust Effect types
+[#effect](https://blog.yoshuawuyts.com/extending-rusts-effect-system/)
+* async { async_fn().await }; // async effect
+* unsafe { unsafe_fn() };     // unsafe effect
+* const { const_fn() };       // const effect
+* try { try_fn()? };          // try effect (unstable)
+* || { yield my_type };       // generator effect (unstable)
+
+- when you write async fn, the return type will desugar to an impl Future.
