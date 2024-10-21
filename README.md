@@ -1,6 +1,6 @@
 ## James Wang
 <p align="left">
-   <a href="https://github.com/JamesWang/">
+   <a href="https://www.linkedin.com/in/james-w-8aab681/">
     LinkedIn
   </a>
 </p>
