@@ -10,13 +10,9 @@
   <!--<img alt="github stats" height="150px" src="https://github-readme-stats.vercel.app/api?username=JamesWang&theme=dark&show_icons=false" />-->
 </p>
 
-<p>Top Skills</p>
+<p>Skills</p>
 
-[![My Top Skills](https://skillicons.dev/icons?i=java,scala,python,rust,golang,haskell,cpp,c,dart,javascript,spring,gradle,maven,linux,bash,redis,kafka,elasticsearch,git,docker,kubernetes)](https://skillicons.dev)
-
-<p>Other Skills</p>
-
-[![Other Skills](https://skillicons.dev/icons?i=opencv,arduino,raspberrypi)](https://skillicons.dev)
+[![My Top Skills](https://skillicons.dev/icons?i=java,scala,python,rust,golang,haskell,cpp,c,dart,javascript,spring,gradle,maven,linux,bash,redis,kafka,elasticsearch,git,docker,kubernetes,opencv,arduino,raspberrypi)](https://skillicons.dev)
 
 
 <!--
