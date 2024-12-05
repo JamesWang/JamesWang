@@ -1,4 +1,6 @@
 ## James Wang
+I am a software engineer who loves writing code using mostly in Java, Python and Scala. I am also love Rust and Golang, and used to a C/C++ programmer.
+I am also coding some IoT stuffs in my spare time with Arduino, ESP32/8266, Raspberry Pi/3/4/5, and OpenCV.
 <p align="left">
    <a href="https://www.linkedin.com/in/james-w-8aab681/">
     LinkedIn
