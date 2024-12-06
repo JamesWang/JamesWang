@@ -45,3 +45,11 @@ path = "src/second.rs"
 * || { yield my_type };       // generator effect (unstable)
 
 - when you write async fn, the return type will desugar to an impl Future.
+
+### Bench mark
+* benchrs
+ * Install, run
+ ```
+  cargo install benchrs
+  benchrs -c 30 -n 3000 -k http://127.0.0.1:8000/
+ ```
