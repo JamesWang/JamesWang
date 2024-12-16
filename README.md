@@ -2,9 +2,7 @@
 I am a software engineer who loves writing code using mostly in Java, Python and Scala. I am also love Rust and Golang, and used to be a C/C++ programmer.
 I am also coding some IoT stuffs in my spare time with Arduino, ESP32/8266, Raspberry Pi/3/4/5, and OpenCV.
 <p align="left">
-   <a href="https://www.linkedin.com/in/james-w-8aab681/">
-    LinkedIn
-  </a>
+   <a href="https://www.linkedin.com/in/james-w-8aab681/"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
 </p>
 
 <p align="left">
