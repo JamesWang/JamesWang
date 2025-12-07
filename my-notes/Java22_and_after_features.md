@@ -11,7 +11,12 @@
     threadLlist.stream().peek(Thread::start).forEach(t -> try { t.join(); } ...}; this will make run one by one
     start those threads first, then outside the loop pipeline to join
     ```
-  - 
+  - ReentrantLock
+    Reentrantock is a synchronization mechanism in Java that offers more flexibity than synchronized block/method. it provides sophisticated thread
+    interactions and additional features, such as fairness, try-lock, interruptibleity. it avoids the pinning prolem in virtual threads (with synchronized)
+    ***ReentrantLock** uses park/unpark mechanisms that are virtual-thread aware. the JVM can detect when a virtual thread parks and unmount it from its carrier
+    thread. Future JDK might introduce "unpinning-aware" I/O, potentially migating pinning in some scenarios. for now, it's often wise to favor ***ReentrantLock**
+    for more flexible synchronization
 4. Core Libraries
  [Java22-Core](https://docs.oracle.com/en/java/javase/22/core/index.html)
 
