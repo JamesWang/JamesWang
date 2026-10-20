@@ -1,4 +1,8 @@
-In the "first-past-the-post" concurrent pattern—implemented in Java's Structured Concurrency API using StructuredTaskScope.Joiner.anySuccessfulResultOrThrow()—the framework utilizes a reactive, callback-driven architecture to short-circuit execution.
+# "first-past-the-post" concurrent pattern
+
+In the **`first-past-the-post`** concurrent pattern—implemented in Java's Structured Concurrency API using `StructuredTaskScope.Joiner.anySuccessfulResultOrThrow()` — 
+the framework utilizes a reactive, callback-driven architecture to *short-circuit* execution.
+
 Below is an accurate, low-level breakdown of exactly how a Joiner coordinates the cancellation of all slower sibling subtasks the millisecond a winner emerges.
 
 ### 1. The Reactive Lifecycle Callback: onComplete
