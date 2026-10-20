@@ -16,21 +16,22 @@ The boolean return value of onComplete determines the lifecycle of the entire sc
 ### 2. State-Driven Evaluation Logic
 
 Under the anySuccessfulResultOrThrow() policy, the internal implementation of onComplete evaluates subtasks using the following deterministic state machine:
-                  +-----------------------------------+
-                  | Subtask Completes (onComplete)    |
-                  +-----------------+-----------------+
-                                    |
-                    Is the subtask state SUCCESS?
-                     /                             \
-                   YES                              NO (FAILED / CANCELLED)
-                   /                                 \
+
++-----------------------------------+
+| Subtask Completes (onComplete)    |
++-----------------+-----------------+
+|
+Is the subtask state SUCCESS?
+/                             
+YES                              NO (FAILED / CANCELLED)
+/                                 
 +------------------v------------------+     +--------v-------------------------+
 | 1. Atomically store first result.    |     | 1. Ignore individual failure.    |
 | 2. Transition scope to SHUTDOWN.    |     | 2. Check if sibling tasks remain.|
 | 3. Return TRUE (Signal Cancellation).|     |    - If YES: Return FALSE.       |
 +-------------------------------------+     |    - If NO (All fail): Record    |
-                                            |      exception & Return TRUE.    |
-                                            +----------------------------------+
+|      exception & Return TRUE.    |
++----------------------------------+
 
 ---
 
